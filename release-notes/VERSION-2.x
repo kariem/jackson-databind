@@ -6,6 +6,8 @@ Project: jackson-databind
 
 2.21.0 (not yet released)
 
+#1381: Add a way to specify "inject-only" with `@JacksonInject`
+ (fix by Giulio L)
 #1547: Un-deprecate `SerializationFeature.WRITE_EMPTY_JSON_ARRAYS`
 #5045: If there is a no-parameter constructor marked as `JsonCreator` and
   a constructor reported as `DefaultCreator`, latter is incorrectly used
@@ -16,6 +18,37 @@ Project: jackson-databind
 #5313: Expose `getConverter()` in `StdDelegatingSerializer` for improved
   customizability
  (contributed by @wrongwrong)
+#5361: Fix Maven SBOM publishing
+#5368: Optimize performance of `ObjectMapper.convertValue()` when `TokenBuffer`
+  passed as `fromValue`
+ (requested by @qsLI)
+#5398: `@JsonProperty.value` + `@JsonIgnore` on setter does not work
+  anymore since 2.18.4
+ (reported by @victor-noel-pfx)
+ (fix by @cowtowncoder, w/ Claude code)
+#5413: Add/support forward reference resolution for array values
+ (contributed by Hélios G)
+#5429: Formatting and Parsing of Large ISO-8601 Dates is inconsistent
+ (reported by @DavTurns)
+#5475: Support `@JsonDeserializeAs` annotation
+ (implemented by @cowtowncoder, w/ Claude code)
+#5476: Support `@JsonSerializeAs` annotation
+ (implemented by @cowtowncoder, w/ Claude code)
+#5541: Add missing `@JsonIdentityInfo` handling for implicit arrays with
+  `DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY`
+ (contributed by Moritz R)
+#5542: `ObjectReader.readValue()` does not fail when
+  `DeserializationFeature.FAIL_ON_UNRESOLVED_OBJECT_IDS` enabled
+ (implemented by @cowtowncoder, w/ Claude code)
+
+2.20.2 (not yet released)
+
+#5393: `@JsonAnyGetter` property gets included in generated schema since 2.19.0
+ (reported by @victor-noel-pfx)
+ (fix by Joo-Hyuk K)
+#5537: Add missing `@JsonIdentityInfo` handling for implicit `Collection`s with
+  `DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY`
+ (contributed by Moritz R)
 
 2.20.1 (30-Oct-2025)
 
@@ -97,6 +130,9 @@ No changes since 2.19.2
  (implementation by Liam F)
 #2145: Add `JsonNode.optional(String name)` and `optional(int index)` methods
  (fix by Joo-Hyuk K)
+#2287: Allow overriding of FAIL_ON_MISSING_CREATOR_PROPERTIES / honor
+  `@JsonProperty(required = false)`
+ - Actual fix via #5020, see below
 #2461: Nested `@JsonUnwrapped` property names not correctly handled
  (reported by @plovell)
  (fix contributed by @SandeepGaur2016)
